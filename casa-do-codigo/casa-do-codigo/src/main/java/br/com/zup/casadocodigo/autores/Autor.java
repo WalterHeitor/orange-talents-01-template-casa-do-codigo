@@ -18,15 +18,20 @@ public class Autor {
 	 	@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
-	    @NotBlank
+	    @NotBlank(message = "{campo.nome.autor}")
 	    @Column(nullable = false)
 	    private String nome;
-	    @NotBlank @Email
+	    
+	    @NotBlank(message = "{campo.email.autor}") @Email(message = "{campo.email.autor}")
 	    @Column(nullable = false, unique = true)
 	    private String email;
+	    
 	    @Column(nullable = false)
-	    @NotBlank @Size(max = 400)
+	    @NotBlank(message = "{campo.descricao.autor}") @Size(max = 400,
+	    		message = "{campo.descmax.autor}")
 	    private String descricao;
+	    
+	    //@NotBlank//(message = "{campo.datadecriacao.autor}")
 	    @Column(nullable = false)
 	    private LocalDateTime dataCriacao = LocalDateTime.now();
 
@@ -37,9 +42,9 @@ public class Autor {
 	    public Autor(@NotBlank String nome, @NotBlank @Email String email,
 	                 @NotBlank @Size(max = 400) String descricao) {
 
-	        Assert.hasLength(nome, "O nome é obrigatório.");
-	        Assert.hasLength(email, "O email é obrigatório.");
-	        Assert.hasLength(descricao, "A descrição é obrigatória.");
+//	        Assert.hasLength(nome, "O nome é obrigatório.");
+//	        Assert.hasLength(email, "O email é obrigatório.");
+//	        Assert.hasLength(descricao, "A descrição é obrigatória.");
 
 
 
