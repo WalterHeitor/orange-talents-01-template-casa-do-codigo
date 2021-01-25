@@ -39,7 +39,8 @@ public class AutorController {
 	@PostMapping
 	@Transactional
 	public ResponseEntity<AutorRespostaDTO> salvar(@RequestBody @Valid AutorDTO dto) {
-		Autor autor = autorRepository.save(dto.transformaParaObjeto());
+		Autor autor = dto.transformaParaObjeto();
+		autorRepository.save(autor);
 		return new ResponseEntity<>(AutorRespostaDTO.transformaEmDTO(autor), HttpStatus.OK);
 	}
 
