@@ -5,6 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import br.com.zup.casadocodigo.validation.EmailDuplicado;
+import br.com.zup.casadocodigo.validation.compartilhada.UniqueValue;
 
 public class AutorDTO {
 
@@ -12,7 +13,7 @@ public class AutorDTO {
     private String nome;
     @Email(message = "{campo.email.autor}")
     @NotBlank(message = "{campo.email.autor}")
-    @EmailDuplicado
+    @UniqueValue(domainClass = Autor.class, fieldName = "email")
     private String email;
     @NotBlank(message = "{campo.descricao.autor}") @Size(max = 400, message = "{campo.descmax.autor}")
     private String descricao;
