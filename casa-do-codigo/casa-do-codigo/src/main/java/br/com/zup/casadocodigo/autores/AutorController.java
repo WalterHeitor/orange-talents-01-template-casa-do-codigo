@@ -25,12 +25,6 @@ public class AutorController {
 
 	@PersistenceContext
 	private EntityManager manager;
-	@Autowired
-	private Validator[] proibeEmailDuplicadoAutorValidator;
-
-//	public void init(WebDataBinder binder) {
-//		binder.assertValidators(proibeEmailDuplicadoAutorValidator);
-//	}
 
 	/**
 	 * @param dto
