@@ -4,15 +4,17 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import br.com.zup.casadocodigo.validation.EmailDuplicado;
+
 public class AutorDTO {
 
-	@NotBlank
+	@NotBlank(message = "{campo.nome.autor}")
     private String nome;
-    @Email
-    @NotBlank
-    //@Unique
+    @Email(message = "{campo.email.autor}")
+    @NotBlank(message = "{campo.email.autor}")
+    @EmailDuplicado
     private String email;
-    @NotBlank @Size(max = 400)
+    @NotBlank(message = "{campo.descricao.autor}") @Size(max = 400, message = "{campo.descmax.autor}")
     private String descricao;
 
 
