@@ -13,7 +13,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-@RestControllerAdvice
+//@RestControllerAdvice
 public class ValidationErrorHandler {
     @Autowired
     private MessageSource messageSource;
@@ -42,9 +42,10 @@ public class ValidationErrorHandler {
     }
 
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(IllegalStateException.class)
-//    public ValidationErrorsOutputDto illegalStateExceptionHandler(IllegalStateException exception){
-//
+//    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+//    public ValidationErrorsOutputDto illegalStateExceptionHandler(SQLIntegrityConstraintViolationException exception){
+//    	List<ObjectError> globalErrors = exception.getBindingResult().getGlobalErrors();
+//        List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
 //
 //        return buildValidationErrors(globalErrors, fieldErrors);
 //    }
