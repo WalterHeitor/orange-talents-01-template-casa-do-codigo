@@ -1,5 +1,6 @@
 package br.com.zup.casadocodigo.erros.compartilhados;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-//@RestControllerAdvice
+@RestControllerAdvice
 public class ValidationErrorHandler {
     @Autowired
     private MessageSource messageSource;
