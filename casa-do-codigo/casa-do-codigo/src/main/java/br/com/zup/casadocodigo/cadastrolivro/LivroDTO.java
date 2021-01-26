@@ -3,13 +3,19 @@ package br.com.zup.casadocodigo.cadastrolivro;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.EntityManager;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.util.Assert;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
+import br.com.zup.casadocodigo.autores.Autor;
+import br.com.zup.casadocodigo.cadastrocategorias.Categoria;
 
 public class LivroDTO {
 	
@@ -79,10 +85,26 @@ public class LivroDTO {
 	public Long getIdAutor() {
 		return idAutor;
 	}
+	/*
+	 * Este setter foi criado por que o json na e capaz
+	 *  de dessearilizar  a data pelo parametro do construtor.
+	 */
+	public void setDataPublicacao(LocalDate dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
 	
 	public Livro transformaParaObjeto() {
 		return new Livro(this.titulo, this.resumo, this.sumario, this.preco,
 				this.numeroPaginas, this.isbn, this.dataPublicacao);
+	}
+	
+	public Livro transformaParaObjeto(EntityManager entityManager) {
+		@NotNull Autor autor = entityManager.find(Autor.class, idAutor);
+		@NotNull Categoria categoria = entityManager.find(Categoria.class, idCategoria);
+		
+		Assert.state(autor != null , "Você esta querendo cadastrar um livro ");
+		
+		return new Livro(titulo, resumo, sumario, preco, numeroPaginas, isbn, dataPublicacao);
 	}
 	
 	
