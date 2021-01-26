@@ -16,10 +16,12 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import br.com.zup.casadocodigo.autores.Autor;
 import br.com.zup.casadocodigo.cadastrocategorias.Categoria;
+import br.com.zup.casadocodigo.validation.compartilhada.UniqueValue;
 
 public class LivroDTO {
 	
 	@NotBlank
+	@UniqueValue(domainClass = Livro.class, fieldName = "titulo")
 	private String titulo;
 	@NotBlank
 	private String resumo;
@@ -31,6 +33,7 @@ public class LivroDTO {
 	@Min(value = 20)
 	private int numeroPaginas;
 	@NotBlank
+	@UniqueValue(domainClass = Livro.class, fieldName = "isbn")
 	private String isbn;
 	@Future
 	@JsonFormat(pattern = "dd/MM/yyyy", shape = Shape.STRING)
@@ -58,6 +61,8 @@ public class LivroDTO {
 		this.idCategoria = idCategoria;
 		this.idAutor = idAutor;
 	}
+	
+	
 	public String getTitulo() {
 		return titulo;
 	}
@@ -93,10 +98,7 @@ public class LivroDTO {
 		this.dataPublicacao = dataPublicacao;
 	}
 	
-	public Livro transformaParaObjeto() {
-		return new Livro(this.titulo, this.resumo, this.sumario, this.preco,
-				this.numeroPaginas, this.isbn, this.dataPublicacao);
-	}
+	
 	
 	public Livro transformaParaObjeto(EntityManager entityManager) {
 		@NotNull Autor autor = entityManager.find(Autor.class, idAutor);
@@ -104,7 +106,7 @@ public class LivroDTO {
 		
 		Assert.state(autor != null , "Você esta querendo cadastrar um livro ");
 		
-		return new Livro(titulo, resumo, sumario, preco, numeroPaginas, isbn, dataPublicacao);
+		return new Livro(titulo, resumo, sumario, preco, numeroPaginas, isbn, dataPublicacao, autor, categoria);
 	}
 	
 	
