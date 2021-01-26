@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import br.com.zup.casadocodigo.autores.Autor;
 import br.com.zup.casadocodigo.cadastrocategorias.Categoria;
-@Entity
+//@Entity
 public class Livro {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
