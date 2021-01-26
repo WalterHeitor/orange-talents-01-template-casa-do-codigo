@@ -13,7 +13,7 @@ public class AutorDTO {
     private String nome;
     @Email(message = "{campo.email.autor}")
     @NotBlank(message = "{campo.email.autor}")
-   // @UniqueValue(domainClass = Autor.class, fieldName = "email")
+    @UniqueValue(domainClass = Autor.class, fieldName = "email")
     private String email;
     @NotBlank(message = "{campo.descricao.autor}") @Size(max = 400, message = "{campo.descmax.autor}")
     private String descricao;
