@@ -24,7 +24,7 @@ import br.com.zup.casadocodigo.cadastrocategorias.Categoria;
 public class Livro {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long id;	
+	private Long id;	
 	@Column(nullable = false, unique = true)
 	private @NotBlank String titulo;
 	@NotBlank

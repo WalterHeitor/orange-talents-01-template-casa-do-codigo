@@ -22,4 +22,6 @@ public class ValidationErrorsOutputDto {
     public List<FieldErrorOutputDto> getErrors() {
         return fieldErrors;
     }
+	
+   
 }

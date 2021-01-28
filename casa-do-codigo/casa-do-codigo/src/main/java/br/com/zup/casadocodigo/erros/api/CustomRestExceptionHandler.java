@@ -22,7 +22,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-//@RestControllerAdvice
+@RestControllerAdvice
 public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
 
     /**
@@ -155,10 +155,10 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
     
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<Object> sQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e){
-        ApiError apiError = new ApiError(Arrays.asList(e.getMessage()));
-        return new ResponseEntity<Object>(
-                apiError, new HttpHeaders(), apiError.getStatus());
+    public ResponseEntity<Object> sQLIntegrityConstraintViolationException
+    (SQLIntegrityConstraintViolationException e){
+        ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, e.getMessage(), "Resourse not found");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
     }
 
 }

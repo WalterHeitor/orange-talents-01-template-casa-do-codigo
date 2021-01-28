@@ -1,7 +1,9 @@
-package br.com.zup.casadocodigo.cadastrolivro;
+package br.com.zup.casadocodigo.cadastrolivro.listLivro.detalhe;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import br.com.zup.casadocodigo.cadastrolivro.Livro;
 
 public class LivroRespostaDTO {
 
@@ -64,15 +66,7 @@ public class LivroRespostaDTO {
 
 	public LivroRespostaDTO(Livro livro) {
 		super();
-		this.titulo = livro.getTitulo();
-//		this.resumo = livro.getResumo();
-//		this.sumario = livro.getSumario();
-//		this.preco = livro.getPreco();
-//		this.numeroPaginas = livro.getNumeroPaginas();
-//		this.isbn = livro.getIsbn();
-//		this.dataPublicacao = livro.getDataPublicacao();
-//		this.idCategoria = livro.getCategoria().getId();
-//		this.idAutor = livro.getAutor().getId();
+		this.titulo = livro.getTitulo();		
 	}
 
 	
