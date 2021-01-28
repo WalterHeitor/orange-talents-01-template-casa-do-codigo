@@ -6,8 +6,7 @@ import br.com.zup.casadocodigo.validation.compartilhada.UniqueValue;
 
 public class CategoriaDTO {
 
-	@NotBlank
-	@UniqueValue(domainClass = Categoria.class, 
+	@NotBlank @UniqueValue(domainClass = Categoria.class, 
 	fieldName = "nome", message = "{campo.nome.categoria}")
 	String nome;
 	
