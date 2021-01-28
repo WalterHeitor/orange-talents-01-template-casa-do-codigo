@@ -10,18 +10,19 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.util.Assert;
 
-public class UniqueValueValidador implements ConstraintValidator<UniqueValue, Object>{
+public class ExistIdValidador  implements ConstraintValidator<ExistId, Object>{
 	
 	private String domainAttribute;
 	private Class<?> klass;
+	private String message;
 	@PersistenceContext
 	private EntityManager manager;
 	
-
 	@Override
-	public void initialize(UniqueValue params) {
+	public void initialize(ExistId params) {
 		domainAttribute = params.fieldName();
 		klass = params.domainClass();
+		message = params.message();
 	}
 
 	@Override
@@ -34,11 +35,7 @@ public class UniqueValueValidador implements ConstraintValidator<UniqueValue, Ob
 		List<?> list = query.getResultList();
 		Assert.state(list.size() <= 1, "Foi encontrado mais de um "+klass+" com o atributo "+domainAttribute+""
 				+ " = "+value);
-		/*
-		Assert.isTrue(list.size() <= 1, "Foi encontrado mais de um "+klass+" com o atributo "+domainAttribute+""
-				+ " = "+value);
-		*/
-		return list.isEmpty();
-		}
+		return !list.isEmpty();
+	}
 
 }

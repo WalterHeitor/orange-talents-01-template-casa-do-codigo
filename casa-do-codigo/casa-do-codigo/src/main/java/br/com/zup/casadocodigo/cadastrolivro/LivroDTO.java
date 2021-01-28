@@ -16,12 +16,14 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import br.com.zup.casadocodigo.autores.Autor;
 import br.com.zup.casadocodigo.cadastrocategorias.Categoria;
+import br.com.zup.casadocodigo.validation.compartilhada.ExistId;
 import br.com.zup.casadocodigo.validation.compartilhada.UniqueValue;
 
 public class LivroDTO {
 	
 	@NotBlank
-	@UniqueValue(domainClass = Livro.class, fieldName = "titulo")
+	@UniqueValue(domainClass = Livro.class, 
+	fieldName = "titulo", message = "{campo.titulo.livro}")
 	private String titulo;
 	@NotBlank
 	private String resumo;
@@ -33,14 +35,19 @@ public class LivroDTO {
 	@Min(value = 20)
 	private int numeroPaginas;
 	@NotBlank
-	@UniqueValue(domainClass = Livro.class, fieldName = "isbn")
+	@UniqueValue(domainClass = Livro.class, 
+	fieldName = "isbn", message = "{campo.isbn.livro}")
 	private String isbn;
 	@Future
 	@JsonFormat(pattern = "dd/MM/yyyy", shape = Shape.STRING)
 	private LocalDate dataPublicacao;
 	@NotNull
+	@ExistId(domainClass = Categoria.class, fieldName = "id",
+	message = "{campo.idcategoria}")
 	private Long idCategoria;
 	@NotNull
+	@ExistId(domainClass = Categoria.class, fieldName = "id",
+	message = "{campo.idautor}")
 	private Long idAutor;
 	
 	public LivroDTO() {
