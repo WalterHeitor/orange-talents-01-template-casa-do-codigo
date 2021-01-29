@@ -8,6 +8,8 @@ import org.hibernate.validator.internal.constraintvalidators.hv.br.CNPJValidator
 import org.hibernate.validator.internal.constraintvalidators.hv.br.CPFValidator;
 import org.springframework.util.Assert;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import br.com.zup.casadocodigo.cadastroestado.Estado;
 import br.com.zup.casadocodigo.cadastropais.Pais;
 import br.com.zup.casadocodigo.validation.compartilhada.CPFouCNPJ;
@@ -41,6 +43,8 @@ public class CompraRequest {
 	private String telefone;
 	@NotBlank 
 	private String cep;
+	
+	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 	public CompraRequest(@NotBlank @Email String email, @NotBlank String nome, @NotBlank String sobrenome,
 			@NotBlank String documento, @NotBlank String endereco, @NotBlank String complemento,
 			@NotBlank String cidade, @NotNull Long idEstado, @NotNull Long idPais, @NotBlank String telefone,
