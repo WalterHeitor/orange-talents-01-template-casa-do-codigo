@@ -23,6 +23,10 @@ public class Estado {
 	@NotNull @Valid
 	@JoinColumn(name = "pais_id", nullable = false)
 	private Pais pais;
+	
+	@Deprecated
+	public Estado() {}
+	
 	public Estado(String nome, @NotNull @Valid Pais pais) {
 		super();
 		this.nome = nome;
@@ -36,6 +40,9 @@ public class Estado {
 	}
 	public Pais getPais() {
 		return pais;
+	}
+	public boolean pertenceAPais(Pais pais) {
+		return this.pais.equals(pais);
 	}
 	
 	

@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
+import org.hibernate.validator.constraints.CompositionType;
+import org.hibernate.validator.constraints.ConstraintComposition;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -18,6 +20,7 @@ import org.hibernate.validator.constraints.br.CPF;
 @Retention(RetentionPolicy.RUNTIME)
 @CPF
 @CNPJ
+@ConstraintComposition(CompositionType.OR)
 public @interface CPFouCNPJ {
 	
 
