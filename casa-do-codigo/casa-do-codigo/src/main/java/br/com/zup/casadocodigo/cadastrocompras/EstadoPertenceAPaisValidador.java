@@ -1,4 +1,4 @@
-package br.com.zup.casadocodigo.autores.cadastrocompras;
+package br.com.zup.casadocodigo.cadastrocompras;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -1,4 +1,4 @@
-package br.com.zup.casadocodigo.autores.cadastrocompras;
+package br.com.zup.casadocodigo.cadastrocompras;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

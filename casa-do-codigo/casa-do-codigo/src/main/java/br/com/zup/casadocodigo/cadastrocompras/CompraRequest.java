@@ -1,4 +1,4 @@
-package br.com.zup.casadocodigo.autores.cadastrocompras;
+package br.com.zup.casadocodigo.cadastrocompras;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
